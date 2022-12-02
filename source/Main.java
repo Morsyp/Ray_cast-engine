@@ -24,19 +24,23 @@ public class Main extends JComponent implements ActionListener {
 
 	public static int[] dists = new int[SC_W/2];
 
-	public static int[][] map = {
-			  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-			, {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1}
-			, {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1}
-			, {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1}
-			, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
-			, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
-			, {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1}
-			, {1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1}
-			, {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1}
-			, {1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1}
-			, {1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1}
-			, {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+	public static int[][] map = { //16
+			  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+			, {1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1}
+			, {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+			, {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+			, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+			, {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+			, {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+			, {1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1}
+			, {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+			, {1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1}
+			, {1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1}
+			, {0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1}
+			, {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+			, {1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1}
+			, {1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1}
+			, {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 			};
 
 	public static void main(String[] args) {
@@ -44,7 +48,7 @@ public class Main extends JComponent implements ActionListener {
 		Main mainc = new Main();
 		f.setSize(SC_W, SC_H);
 		f.setVisible(true);
-		f.setResizable(true);
+		f.setResizable(false);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setLocationRelativeTo(null);
 		f.addKeyListener(new keyAdapter());
@@ -118,8 +122,8 @@ public class Main extends JComponent implements ActionListener {
 		
 		for(int i=0;i < dists.length;i++) {
 			if(dists[i] > SC_H) dists[i] = SC_H;
-			if(dists[i]/2 < 255) g.setColor(new Color(20, 20, 255-dists[i]/2));
-			else g.setColor(new Color(0, 20, 0));
+			if(dists[i]/2 < 255) g.setColor(new Color(0, 0, 255-dists[i]/2));
+			else g.setColor(new Color(0, 0, 0));
 			
 			g.fillRect(SC_W / dists.length * i, SC_H/2 - (SC_H-dists[i])/2, SC_W / dists.length, SC_H-dists[i]);
 		}
@@ -163,5 +167,4 @@ public class Main extends JComponent implements ActionListener {
 			}
 		}
 	}
-
 }
